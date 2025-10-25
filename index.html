@@ -1,234 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prasanna | Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #0f172a;
-      color: #f8fafc;
-    }
-
-    header {
-      position: fixed;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      z-index: 1000;
-    }
-
-    header h1 {
-      color: #38bdf8;
-      font-size: 1.6em;
-      font-weight: 700;
-    }
-
-    nav a {
-      color: #f8fafc;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 100px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    #home {
-      background: linear-gradient(120deg, #0f172a, #1e293b);
-    }
-
-    #home h2 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    #home p {
-      font-size: 1.2em;
-      color: #94a3b8;
-      max-width: 600px;
-    }
-
-    .btn {
-      margin-top: 30px;
-      padding: 12px 25px;
-      background: #38bdf8;
-      color: #0f172a;
-      border: none;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #0ea5e9;
-      transform: scale(1.05);
-    }
-
-    #about, #projects, #contact {
-      background: #1e293b;
-    }
-
-    #about h2, #projects h2, #contact h2 {
-      color: #38bdf8;
-      margin-bottom: 20px;
-      font-size: 2em;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .project-card {
-      background: #0f172a;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .project-card h3 {
-      color: #38bdf8;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background: #0f172a;
-      padding: 20px;
-      text-align: center;
-      color: #94a3b8;
-    }
-
-    footer a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-    }
-  </style>
-</head>
+<meta charset="utf-8">
 <body>
-  <header>
-    <h1>Prasanna</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<svg width="800" height="400"></svg>
 
-  <section id="home">
-    <div class="fade-in">
-      <h2>Hey, I'm Prasanna 👋</h2>
-      <p>A passionate Data Science and AI enthusiast who loves building cool projects that make an impact.</p>
-      <button class="btn" onclick="document.getElementById('projects').scrollIntoView()">View My Work</button>
-    </div>
-  </section>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const data = [
+  { date: new Date('2025-10-21'), open: 101, high: 108, low: 99, close: 104 },
+  { date: new Date('2025-10-22'), open: 104, high: 110, low: 102, close: 106 },
+  { date: new Date('2025-10-23'), open: 106, high: 107, low: 100, close: 101 },
+  { date: new Date('2025-10-24'), open: 101, high: 105, low: 99, close: 103 },
+  { date: new Date('2025-10-25'), open: 103, high: 111, low: 102, close: 110 }
+];
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p class="fade-in" style="max-width: 700px; color: #cbd5e1;">
-      I’m Prasanna, a curious learner and creative problem-solver. I enjoy exploring data, uncovering insights, and developing
-      intelligent solutions using AI and machine learning. I love turning ideas into reality with clean and modern code.
-    </p>
-  </section>
+const svg = d3.select("svg");
+const margin = {top: 20, right: 40, bottom: 30, left: 40};
+const width = +svg.attr("width") - margin.left - margin.right;
+const height = +svg.attr("height") - margin.top - margin.bottom;
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid fade-in">
-      <div class="project-card">
-        <h3>AI Chatbot</h3>
-        <p>Developed an interactive chatbot using Python and NLP that responds intelligently to user queries.</p>
-      </div>
-      <div class="project-card">
-        <h3>Data Visualization Dashboard</h3>
-        <p>Built a dashboard in Python using Plotly and Dash to visualize real-time data trends.</p>
-      </div>
-      <div class="project-card">
-        <h3>Machine Learning Model</h3>
-        <p>Created a predictive model that analyzes data patterns and forecasts outcomes with high accuracy.</p>
-      </div>
-    </div>
-  </section>
+const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p class="fade-in" style="color: #cbd5e1;">
-      Want to collaborate or just say hi? Let’s connect!
-    </p>
-    <p style="margin-top: 20px;">
-      📧 <a href="mailto:prasanna@example.com">prasanna@example.com</a>
-    </p>
-    <p style="margin-top: 10px;">
-      🌐 <a href="https://www.linkedin.com/in/prasanna" target="_blank">LinkedIn</a> |
-      💻 <a href="https://github.com/prasanna" target="_blank">GitHub</a>
-    </p>
-  </section>
+const x = d3.scaleBand()
+  .domain(data.map(d => d.date))
+  .range([0, width])
+  .padding(0.3);
 
-  <footer>
-    © 2025 Prasanna | Designed with 💙 by Me
-  </footer>
+const y = d3.scaleLinear()
+  .domain([d3.min(data, d => d.low), d3.max(data, d => d.high)])
+  .nice()
+  .range([height, 0]);
 
-  <script>
-    // Add smooth fade-in animation when scrolling
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationDelay = '0.2s';
-          entry.target.classList.add('visible');
-        }
-      });
-    });
+g.append("g")
+  .attr("transform", `translate(0,${height})`)
+  .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %d")));
 
-    fadeEls.forEach(el => observer.observe(el));
-  </script>
+g.append("g").call(d3.axisLeft(y));
+
+// Wick lines
+g.selectAll(".wick")
+  .data(data)
+  .enter()
+  .append("line")
+  .attr("class", "wick")
+  .attr("x1", d => x(d.date) + x.bandwidth()/2)
+  .attr("x2", d => x(d.date) + x.bandwidth()/2)
+  .attr("y1", d => y(d.high))
+  .attr("y2", d => y(d.low))
+  .attr("stroke", "black");
+
+// Candle bodies
+g.selectAll(".candle")
+  .data(data)
+  .enter()
+  .append("rect")
+  .attr("class", "candle")
+  .attr("x", d => x(d.date))
+  .attr("y", d => y(Math.max(d.open, d.close)))
+  .attr("width", x.bandwidth())
+  .attr("height", d => Math.abs(y(d.open) - y(d.close)))
+  .attr("fill", d => d.close > d.open ? "green" : "red");
+</script>
 </body>
-</html>
